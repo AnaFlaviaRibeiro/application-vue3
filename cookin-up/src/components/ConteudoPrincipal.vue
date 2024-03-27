@@ -1,33 +1,19 @@
 <template>
-    <main class="conteudo-principal">
-        <section class="conteudo-principal">
-            <span class="subtitulo-lg sua-lista-texto">
-                Sua Lista:
-            </span>
+  <main class="conteudo-principal">
+    <SuaLista :ingredientes="listIngredientes" />
 
-            <ul v-if="listIngredientes.length" class="ingredientes-sua-lista">
-                <li v-for="ingrediente in listIngredientes" class="ingrediente" :key="ingrediente.id">
-                    {{ ingrediente }}
-                </li>
-            </ul>
-
-            <p v-else class="paragrafo lista-vazia">
-                <img src="../assets/images/icones/lista-vazia.svg" alt="ícone de pesquisa">
-                Sua lista está' vazia! Selecione ingredientes para iniciar.
-            </p>
-        </section>
-
-        <SelecionarIngredientes
-        />
-    </main>
+    <SelecionarIngredientes />
+  </main>
 </template>
 
 
 <script>
 import SelecionarIngredientes from './SelecionarIngredientes.vue';
+import SuaLista from './SuaLista.vue';
 export default {
   components: {
-      SelecionarIngredientes
+      SelecionarIngredientes,
+      SuaLista
   },
   name: 'ConteudoPrincipal',
   
@@ -53,44 +39,6 @@ export default {
   align-items: center;
   gap: 5rem;
 }
-
-.sua-lista-texto {
-  color: var(--coral, #F0633C);
-  display: block;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.ingredientes-sua-lista {
-  display: flex;
-  justify-content: center;
-  gap: 1rem 1.5rem;
-  flex-wrap: wrap;
-}
-
-.ingrediente {
-  display: inline-block;
-  border-radius: 0.5rem;
-  min-width: 4.25rem;
-  padding: 0.5rem;
-  text-align: center;
-    transition: 0.2s;
-    color: var(--creme, #FFFAF3);
-  background: var(--coral, #F0633C);
-  font-weight: 700;
-}
-
-.lista-vazia {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-
-  color: var(--coral, #F0633C);
-  text-align: center;
-}
-
 @media only screen and (max-width: 1300px) {
   .conteudo-principal {
     padding: 5rem 3.75rem;

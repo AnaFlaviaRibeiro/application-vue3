@@ -10,7 +10,7 @@
 
         <ul class="categorias">
             <li v-for="categoria in categorias" :key="categoria.id">
-                {{ categoria.nome }}
+                <CardCategoria :categoria="categoria" />
             </li>
         </ul>
 
@@ -22,9 +22,13 @@
 
 <script>
 import { obterCategorias } from '@/http/index';
+import CardCategoria from './CardCategoria.vue';
 
 export default {
   name: 'SelecionarIngredientes',
+  components: {
+    CardCategoria,
+  },
   data() {
     return {
         categorias: [],
